@@ -1,0 +1,336 @@
+.typing-indicator {
+  display: flex;
+  gap: 12px;
+  padding: 16px 0;
+  animation: typingSlideIn 0.3s ease-out;
+}
+
+.typing-avatar {
+  flex-shrink: 0;
+}
+
+.typing-avatar .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-blue) 100%);
+  color: white;
+}
+
+.typing-content {
+  flex: 1;
+  max-width: calc(100% - 44px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.typing-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.typing-sender {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.typing-status {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.typing-bubble {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  padding: 16px;
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--glass-shadow);
+  min-height: 60px;
+}
+
+/* Typing Dots Animation */
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  animation: typingBounce 1.4s ease-in-out infinite both;
+}
+
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+.dot:nth-child(3) { animation-delay: 0s; }
+
+.typing-text {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* AI Thinking Animation */
+.ai-thinking {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 12px 16px;
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  animation: fadeIn 0.5s ease-out 0.3s both;
+}
+
+.thinking-animation {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.thinking-orb {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  animation: thinkingPulse 2s ease-in-out infinite;
+}
+
+.thinking-orb:nth-child(1) { 
+  background: var(--accent-cyan);
+  animation-delay: 0s; 
+}
+.thinking-orb:nth-child(2) { 
+  background: var(--accent-blue);
+  animation-delay: 0.2s; 
+}
+.thinking-orb:nth-child(3) { 
+  background: var(--accent-purple);
+  animation-delay: 0.4s; 
+}
+
+.thinking-text {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* JARVIS-style Scanning Effect */
+.typing-bubble::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(59, 130, 246, 0.1),
+    transparent
+  );
+  animation: jarvisScan 3s ease-in-out infinite;
+  border-radius: inherit;
+}
+
+/* Animations */
+@keyframes typingSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typingBounce {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes thinkingPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes jarvisScan {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Advanced JARVIS Effects */
+.typing-bubble {
+  position: relative;
+  overflow: hidden;
+}
+
+.typing-bubble::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    var(--accent-cyan),
+    var(--accent-blue),
+    var(--accent-purple),
+    var(--accent-cyan)
+  );
+  border-radius: 18px;
+  z-index: -1;
+  animation: borderGlow 3s ease-in-out infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    opacity: 0.3;
+    background-position: 0% 50%;
+  }
+  50% {
+    opacity: 0.6;
+    background-position: 100% 50%;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .typing-indicator {
+    padding: 12px 0;
+    gap: 8px;
+  }
+  
+  .typing-avatar .avatar {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .typing-content {
+    max-width: calc(100% - 36px);
+  }
+  
+  .typing-bubble {
+    padding: 12px;
+    min-height: 50px;
+  }
+  
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .typing-text {
+    font-size: 13px;
+  }
+  
+  .ai-thinking {
+    padding: 10px 12px;
+  }
+  
+  .thinking-orb {
+    width: 5px;
+    height: 5px;
+  }
+  
+  .thinking-text {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .typing-indicator {
+    padding: 10px 0;
+  }
+  
+  .typing-bubble {
+    padding: 10px;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .typing-dots {
+    align-self: flex-start;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .dot,
+  .thinking-orb,
+  .typing-bubble::before,
+  .typing-bubble::after {
+    animation: none;
+  }
+  
+  .typing-indicator {
+    animation: none;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .typing-bubble {
+    background: rgba(15, 23, 42, 0.9);
+  }
+}
+
+/* Focus styles for accessibility */
+.typing-indicator:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 4px;
+  border-radius: 8px;
+}

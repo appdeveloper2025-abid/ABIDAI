@@ -1,0 +1,333 @@
+.message {
+  display: flex;
+  gap: 12px;
+  padding: 16px 0;
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+.message.latest {
+  animation: messageHighlight 0.5s ease-out;
+}
+
+.user-message {
+  flex-direction: row-reverse;
+}
+
+.user-message .message-content {
+  align-items: flex-end;
+}
+
+/* Avatar Styles */
+.message-avatar {
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.user-avatar {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+  color: white;
+}
+
+.assistant-avatar {
+  background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-blue) 100%);
+  color: white;
+}
+
+/* Message Content */
+.message-content {
+  flex: 1;
+  max-width: calc(100% - 44px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.message-sender {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.message-time {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Message Text */
+.message-text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.user-text {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border-bottom-right-radius: 4px;
+  line-height: 1.5;
+  max-width: 100%;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.assistant-text {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  padding: 16px;
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Markdown Styling */
+.assistant-text p {
+  margin-bottom: 12px;
+}
+
+.assistant-text p:last-child {
+  margin-bottom: 0;
+}
+
+.assistant-text ul, .assistant-text ol {
+  margin-bottom: 12px;
+  padding-left: 20px;
+}
+
+.assistant-text li {
+  margin-bottom: 4px;
+}
+
+.assistant-text li:last-child {
+  margin-bottom: 0;
+}
+
+.assistant-text h1, .assistant-text h2, .assistant-text h3 {
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.assistant-text h1 {
+  font-size: 1.5em;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.assistant-text h2 {
+  font-size: 1.3em;
+}
+
+.assistant-text h3 {
+  font-size: 1.1em;
+}
+
+/* Code Blocks */
+.inline-code {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent-cyan);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.code-block {
+  margin: 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #1e1e1e;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.code-language {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+.copy-code-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.copy-code-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+}
+
+.syntax-highlighter {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+
+/* Tables */
+.table-container {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.markdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.markdown-table th,
+.markdown-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.markdown-table th {
+  background: rgba(59, 130, 246, 0.1);
+  font-weight: 600;
+}
+
+/* Blockquotes */
+.markdown-blockquote {
+  border-left: 4px solid var(--accent-blue);
+  padding: 12px 16px;
+  margin: 16px 0;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+/* Message Actions */
+.message-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-color: var(--accent-blue);
+}
+
+/* Animations */
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes messageHighlight {
+  0% {
+    background: rgba(59, 130, 246, 0.1);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .message {
+    padding: 12px 0;
+    gap: 8px;
+  }
+  
+  .avatar {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .user-text, .assistant-text {
+    padding: 10px 14px;
+  }
+  
+  .message-content {
+    max-width: calc(100% - 36px);
+  }
+  
+  .code-header {
+    padding: 6px 10px;
+  }
+  
+  .syntax-highlighter {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .message {
+    padding: 10px 0;
+  }
+  
+  .user-text, .assistant-text {
+    padding: 8px 12px;
+  }
+  
+  .assistant-text {
+    font-size: 14px;
+  }
+}
+
+/* Focus styles */
+.action-btn:focus-visible,
+.copy-code-btn:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 1px;
+}

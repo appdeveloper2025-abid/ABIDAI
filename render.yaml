@@ -1,0 +1,43 @@
+
+## render.yaml
+
+```yaml
+# Render configuration file
+services:
+  - type: web
+    name: abidgpt
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    envVars:
+      - key: REACT_APP_OPENAI_API_KEY
+        value: your_openai_api_key_here
+      - key: REACT_APP_APP_NAME
+        value: ABIDGPT
+      - key: REACT_APP_DEFAULT_MODEL
+        value: gpt-3.5-turbo
+      - key: REACT_APP_MAX_TOKENS
+        value: 2000
+      - key: REACT_APP_TEMPERATURE
+        value: 0.7
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-XSS-Protection
+        value: 1; mode=block
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+
+# Build and deployment settings
+buildFilter:
+  paths:
+    - src/**
+    - public/**
+    - package.json
+    - package-lock.json
